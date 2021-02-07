@@ -1,0 +1,52 @@
+{% include "python/vertbart.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+
+    <h1  style="font-family:sans-serif ">List</h1><br>
+    <div style="width: 50%; font-family: sans-serif;" >
+       <b> Co je v Pyhonu List</b><br>
+        <b>List</b> je jedním ze 4 předdefinovaných datových typů v Pythonu používaných k ukládání sbírek dat, další 3 jsou <b>Tuple</b>, <b>Set</b> a <b>Dictionary</b>.
+Položky <b>List</b> jsou seřazeny, lze je měnit a umožňují duplicitní hodnoty. Položky <b>List</b> jsou indexovány, první položka má index [0], druhá položka má index [1] atd.<br>
+
+        <br><b>List</b> se vytváří pomocí hranatých závorek. obsahuje množství dat, oddělených čárkami.<br>
+        Vytvoření listu: <code>list = [1, 'string', 1.5]</code><br>
+        List může být i také prázdný: <code>list = []</code> <br>
+<br>
+       <b> Užitečné metody a příklady:</b><br>
+        vytvoříme list <code>muj_list = ["Adam", "Petr", "Petr"]</code><br>
+        vytiskneme list <code>print(muj_list)</code><br>
+
+            <ul>
+         <li>   <b>.index</b> vytiskneme jméno pomocí indexu takto :<code>muj_list.index(0)</code>
+             vytiskne se jméno Adam <br><br></li>
+
+
+            <li><b>.append</b> přidáme prvek do listu takto : <code>muj_list.append("Martin") </code>
+              když list vytiskeneme pomocí <code>print(muj_list)</code> vytiskne se ["Adam", "Petr", "Petr","Martin"]<br><br></li>
+
+            <li><b>.insert</b> přidáme prvek na pozici podle indexu do listu takto : <code>muj_list.insert(0,"Josef") </code>
+              když list vytiskeneme pomocí <code>print(muj_list)</code> vytiskne se ["Josef","Adam", "Petr", "Petr","Martin"]<br><br></li>
+
+            <li><b>.clear()</b> vymažeme vše v Listu takto : <code>muj_list.clear() </code>
+                Vymaže všechny prvky z listu<br><br></li>
+
+            <li><b>.sort()</b> seřadímě položky v listu podle abecedy nebo hodnoty : <code>muj_list.sort() </code>
+               <br><br></li>
+
+             <li><b>.reverse()</b> položky v listu seřadíme obráceně <code>muj_list.sort() </code>
+               <br></li>
+</ul>
+            další užitečné metody funkce<br>
+<ul><br>
+   <li><b>.extend</b> chceme-li k aktuálnímu listu přidat prvky z jiného listu</li><br>
+       <li><b>.muj_list[1] = "Karel"</b> chceme-li změnit hodnotu položky v indexu 1</li><br>
+    <li><b>.extend()</b> položku přidáme na konec listu</li><br>
+    <li><b>.remove("Adam")</b> odstraníme poožku "Adam" z listu</li><br>
+    <li><b>.copy()</b> vytvoříme kopii listu <code>muj_novy_list = muj_list.copy() </code> </li><br>
+    <li><b>.count("Petr")</b> vypíšeme počet výskytů hodnoty "Petr" v listu</li><br>
+
+</ul>
+
+        </div>
+    </div>
+{% endblock %}

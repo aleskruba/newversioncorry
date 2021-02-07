@@ -1,0 +1,58 @@
+{% include  "javascript/sidemenu.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+
+    <h1  style="font-family: Fantasy ">JavaScript DOM  </h1>
+    <p style="width: 50%; font-family: sans-serif;" >
+       <b>Co je DOM v JavaScriptu?</b>
+anglicky Document Object Model (DOM).<br>JavaScript může mít přistup ke všem prvkům(div,ul,li atd...) webové stránky s využitím modelu  (DOM)</b>
+        <br><br>
+           <b>Jak používat DOM?</b><br>
+Pomocí DOM může JavaScript provádět více úkolů. Může vytvářet nové prvky a atributy, měnit stávající prvky a atributy a dokonce odstraňovat existující prvky a atributy. JavaScript může také reagovat na existující události a vytvářet nové události na stránce.        <br>
+   <br><br>
+        <b>getElementById, innerHTML - příklad</b><br></p>
+     <ul>
+    <li><b>getElementById:</b> Přístup k prvkům a atributům, jejichž ID je nastaveno.</li>
+    <li><b>innerHTML: </b>Pro přístup k obsahu prvku. </li>
+</ul>
+    <br><br>
+    <div style="background-color:white; width:600px" >
+    &lt;html&gt;<br>
+        &lt;head&gt;<br>
+    &lt;title&gt; JavaScript - DOM &lt;/title&gt;<br>
+        &lt;/head&gt;<br>
+      &lt;body&gt;<br>
+          &lt;h1 id="zprava">Ahoj&lt;/h1><br>
+  &lt;p>Toto je uvítací zpráva &lt;/p><br>
+  &lt;h2>Obsah&lt;/h2><br>
+  &lt;p>Toto je obsah zprávy.&lt;/p><br>
+       &lt;script type="text/javascript"&gt;<br>
+  &nbsp;&nbsp;  var text = document.getElementById("zprava").innerHTML;<br>
+	&nbsp;&nbsp;	alert("první nadpis je  " + text);<br>
+      &lt;/script&gt;<br>
+      &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<br>
+    <b>getElementsByTagName  - příklad</b><br>   <br>
+    <div style="background-color:white; width:600px" >
+&lt;html><br>
+&lt;head><br>
+	&lt;title>DOM&lt;/title><br>
+&lt;/head><br>
+&lt;body><br>
+  &lt;h1>Ahoj&lt;/h1><br>
+  &lt;p>Toto je uvítací zpráva .&lt;/p><br>
+  &lt;h2>Obsah&lt;/h2><br>
+  &lt;p id="dva">Toto je obsah druhé zprávy.&lt;/p><br>
+  &lt;script type="text/javascript"><br>
+	&nbsp;&nbsp;var odstavec = document.getElementsByTagName("p");<br>
+  &nbsp;&nbsp;  alert("Obsah v druhém odstavci je " + odstavec[1].innerHTML);<br>
+  &nbsp;&nbsp;  document.getElementById("dva").innerHTML = "Původní druhá zpráva byla změněna na tuto zprávu.";<br>
+  &lt;/script><br>
+&lt;body><br>
+&lt;/html><br>
+    </div>
+<br><br>
+  </div>
+{% endblock %}

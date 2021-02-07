@@ -1,0 +1,137 @@
+{% include  "javascript/sidemenu.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 2rem;
+  height:50vh;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 50vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 50vh;
+}
+</style>
+
+    <h1  style="font-family: Fantasy ">JavaScript - cykly for, while , do while </h1>
+    <p style="width: 50%; font-family: sans-serif;" >
+       <b> Jak používat cykly:</b>
+     Cykly (anglicky loops)  jsou užitečné, když musíte opakovaně spouštět stejné řádky kódu.
+     Předpokládejme, že na své webové stránce chcete stokrát napsat větu „Dobrý den“.
+     Místo zkopírování 100x stejného ködu,  použijete cykly a celý kód bude mít maximálne 4 řádky.<br><br>
+        <b>cyklus for</b>
+        <div style="width:500px; background:white;">
+        var jmena = new Array("Adam", "Petr", "Pavel");<br>
+    for (i=0;i < jmena.length; i++)<br>
+		{
+		document.write(jmena[i] + "&lt;br /&gt;");
+		}</div><br>
+    <ul>vysvětlení výroků v cyklu  <b>for (i=0;i < jmena.length; i++)</b>
+        <li><b>i=0;</b> je vykonáno ještě před provedením smyčkového kódu. Tento výrok se tedy běžně používá k přiřazení hodnot k proměnným, které se použijí uvnitř cyklu</li>
+        <li><b>i < jmena.length;</b> tento výrok je podmínkou pro provedení cyklu. </li>
+        <li><b>i++</b>tento výrok se provede pokaždé po provedení kódu cyklu.</li>
+    </ul>
+
+
+    <i>Vyzkoušejte si to</i></p>
+
+
+<div class="main-editor">
+
+  <div  class="first" contenteditable>
+    &lt;html&gt;
+    &lt;title&gt; JavaScript - cykly for, while , do while  &lt;/title&gt;
+      &lt;head&gt;
+       &lt;script&gt;
+
+
+      &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+
+  </div>
+    <iframe class="second" >
+    </iframe>
+  </div>
+    <br>
+  <b>cyklus while</b><br>
+    Cyklus "while" je vykonáván, dokud je splněna zadaná podmínka.
+    <p style="color:red">V cyklu  "while" byste měli zahrnout příkaz, který smyčku v určitém okamžiku ukončí.
+        Jinak tento "cyklus"  nikdy neskončí a váš prohlížeč může selhat. Pokud budete psát tento kód zde, zadejte "while (x<20)" až naposledy.</p>
+
+
+                   <div style="width:500px; background:white;">
+
+                       var x = 1;<br>
+                        while (x < 20) {<br>
+    		x++;  }<br>
+		document.write("x < 20");<br>
+		<br>
+                   </div><br>
+      <b>cyklus do while </b><br>
+
+    Cyklus "do while" je velmi podobný cyklu "while". Jediný rozdíl je v tom, že v cyklu "do while" se blok kódu provede jednou ještě před kontrolou stavu.
+    <p style="color:red">V cyklu  "do while" byste měli zahrnout příkaz, který smyčku v určitém okamžiku ukončí.
+        Jinak tento "cyklus"  nikdy neskončí a váš prohlížeč může selhat. </p>
+
+
+                   <div style="width:500px; background:white;">
+
+                       var x = 1;<br>
+                       do  {  document.write(x+" "); <br>
+    		x++;  }<br>
+		while(x<10);<br>
+		<br>
+                   </div><br>
+    Příklad násobky 2
+                  <div style="width:500px; background:white;">
+
+                       var x = 1;<br>
+                       do { document.write(2*x +","); <br>
+    		x++;  }<br>
+		while(x<=10);<br>
+		<br>
+                   </div><br>
+
+<script>
+
+    const first = document.querySelector(".first");
+    const iframe = document.querySelector("iframe");
+    
+  
+    
+    first.addEventListener('keyup',()=>{
+     var html = first.textContent;
+     iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+    })
+    
+    first.addEventListener("paste", function(e) {
+           e.preventDefault();
+           var text = e.clipboardData.getData("text/plain");
+           document.execCommand("insertText", false, text);
+       });
+  
+    </script>
+  </div>
+{% endblock %}

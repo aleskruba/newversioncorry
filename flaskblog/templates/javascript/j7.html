@@ -1,0 +1,96 @@
+{% include  "javascript/sidemenu.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 70vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 70vh;
+}
+</style>
+
+    <h1  style="font-family: Fantasy ">JavaScript funkce a volání funkce  </h1>
+    <p style="width: 50%; font-family: sans-serif;" >
+       <b>Co je funkce v JavaScriptu?</b>
+        Funkce jsou velmi důležité a užitečné v jakémkoli programovacím jazyce, protože umožňují opětovné použití kódu. Funkce je blok kódu, který se provede, pouze pokud je vyvolán. Pokud máte několik řádků kódu, které je třeba použít několikrát, můžete vytvořit funkci včetně opakujících se řádků kódu a poté funkci volat kdekoli chcete.<br><br>
+        <b>Jak vytvořit funkci v JavaScriptu</b>
+    <br>
+    <ol>
+    <li>Napište keyword "function" následovanou názvem funkce.</li>
+    <li>Za názvem funkce otevřete a zavřete závorky.</li>
+    <li>Po závorkách otevřete a zavřete složené závorky.</li>
+    <li>Do složených závorek napište řádky kódu.</li>
+</ol>
+        <div style="width:500px; background:white;">
+      function mojefunkce()<br>
+        {<br>
+        	document.write("Toto je moje první funkce.");<br>
+         }<br>
+        mojefunkce();</div><br>
+
+    <i>Vyzkoušejte si to</i></p>
+
+
+<div class="main-editor">
+
+  <div  class="first" contenteditable>
+    &lt;html&gt;
+    &lt;title&gt; JavaScript - Funkce &lt;/title&gt;
+      &lt;head&gt;
+       &lt;script&gt;
+
+
+      &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+
+  </div>
+    <iframe class="second" >
+    </iframe>
+  </div>
+
+<script>
+
+    const first = document.querySelector(".first");
+    const iframe = document.querySelector("iframe");
+
+
+
+    first.addEventListener('keyup',()=>{
+     var html = first.textContent;
+     iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+    })
+
+    first.addEventListener("paste", function(e) {
+           e.preventDefault();
+           var text = e.clipboardData.getData("text/plain");
+           document.execCommand("insertText", false, text);
+       });
+
+    </script>
+  </div>
+{% endblock %}

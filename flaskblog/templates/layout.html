@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if title %}
+    <title>Flask Blog - {{ title }}</title>
+    {% else %}
+     <title>Flask Blog</title>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="learnpython.org is a free interactive Python tutorial for people who want to learn Python, fast." />
+    <meta name="keywords" content="Learn,Python,Tutorial,Interactive,Free" />
+    <meta name="google-site-verification" content="cXWj61RCtO3fVP24Y7CO-nX0ba30tgdJYY8GGBactLI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Variables and Types - Learn Python - Free Interactive Python Tutorial" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.learnpython.org/" />
+    <meta property="og:image" content="https://www.learnpython.org/static/img/share-logos/learnpython.org.png" />
+
+
+
+
+
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css') }}">
+
+</head>
+<body>
+<nav class="navbar navbar-inverse" style=" position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;">
+  <div class="container-fluid">
+    <div class="navbar-header" style=" position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;">
+      <p class="navbar-brand" style="color:red">IT-Block</p>
+
+    <ul class="nav navbar-nav mr-auto">
+
+         {% set navbar_menus = [
+        ('/', 'o mně', 'O mne'),
+        ('/python', 'Python', 'Python'),
+        ('/javascript1', 'javascript', 'Javascript'),
+        ('/sql', 'SQL', 'SQL'),
+        ('/linux', 'Linux', 'Linux'),
+             ] -%}
+        {% set active_page = active_page|default('about') -%}
+        {% for href, id, caption in navbar_menus %}
+
+  <li class="nav-item">
+       <a class="nav-link {% if id == active_page %} active {% endif%}" href="{{ href }}">    {{ caption }}
+                </a></li>
+        {% endfor %}
+
+    </ul>
+</div>
+
+
+    <ul class="nav navbar-nav navbar-right">
+        {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('main.comments') }}">Komentáře</a></li>
+            <li><a href="{{ url_for('posts.new_post') }}"><span class="glyphicon glyphicon-log-in"></span>Vložit komentář</a></li>
+            <li><a href="{{ url_for('users.account') }}"><span class="glyphicon glyphicon-log-in"></span> Profile</a></li>
+            <li><a href="{{ url_for('users.logout') }}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li style="color:red"> Jsi přihlášený jako {{ current_user.username}}</li>
+        {% else %}
+      <li><a href="{{ url_for('users.register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{{ url_for('users.login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
+    </ul>
+    </div>
+    </div>
+</nav>
+ <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}}" role="alert">
+                <span>{{ message }}</span></div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+{% block content %}
+
+
+{% endblock %}
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

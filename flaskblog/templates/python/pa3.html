@@ -1,0 +1,113 @@
+{% include "python/vertbart.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 2rem;
+  height:50vh;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+</style>
+
+    <h1  style="font-family:sans-serif ">Manipulace s obrázkem s <b>pillow</b></h1><br>
+    <div style="width: 50%; font-family: sans-serif;" >
+        Pillow nainstalujeme v terminálu <code>pip install pillow</code><br><br>
+
+
+        Spuštěním tohoto kódu zobrazíme image<br>
+        <code>from PIL import Image<br><br>
+  image = Image.open('foto.jpg')<br>
+image.show()<br>
+        </code><br>
+
+             Vytvoříme kopii<br>
+        <code>
+  image = Image.open('foto.jpg')<br>
+image.save('foto.png')<br>
+        </code><br>
+
+             Vypíšeme všechny soubory s příponou .png<br>
+        <code>from PIL import Image<br>
+import os
+<br><br>
+for f in os.listdir('.'):<br>
+    &nbsp;&nbsp;if f.endswith('.png'):<br>
+    &nbsp;&nbsp;print(f)<br>
+        </code><br>
+
+              Vypíšeme názvy(připony) všech souboru .png <br>
+        <code>
+        for f in os.listdir('.'):<br>
+   &nbsp;&nbsp; if f.endswith('.png'):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i = Image.open(f)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  nazev,pripona = os.path.splitext(f)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  print(nazev)<br>
+         </code><br>
+               Zkopírujeme všechny soubory s příponou .png do předem vytovořené složky /pngs  <br>
+        <code>
+        for f in os.listdir('.'):<br>
+   &nbsp;&nbsp; if f.endswith('.png'):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i = Image.open(f)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  nazev,pripona = os.path.splitext(f)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i.save('pngs/{}.png'.format(nazev))<br>
+         </code><br>
+
+         Přejmenujete a vytvoříte kopie souborů s koncovkou .png do předem vytovořené složky /300 v rozlišení 300x300px <br>
+        <code>
+            size_300 = (300,300)<br><br>
+        for f in os.listdir('.'):<br>
+   &nbsp;&nbsp; if f.endswith('.png'):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i = Image.open(f)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  nazev,pripona = os.path.splitext(f)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i.thumbnail(size_300)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i.save('300/{}_300.{}'.format(nazev,pripona)))<br>
+         </code><br>
+
+                   Otočíte obrázek a uložite jako nový soubor   <br>
+        <code>
+  image = Image.open('foto.jpg')<br>
+  image.rotate(90).save('otocenene_foto.jpg')<br>
+         </code><br>
+
+                          Vytvoříte černobílou kopii a uložite jako nový soubor   <br>
+        <code>
+  image = Image.open('foto.jpg')<br>
+  image.convert(mode=´L').save('cernobila_foto.jpg')<br>
+         </code><br>
+                              Vytvoříte rozmazanou kopii a uložite jako nový soubor   <br>
+        <code>
+  image = Image.open('foto.jpg')<br>
+  image.filter(ImageFilter.GaussianBlur(15)).save('rozmazana_foto.jpg')<br>
+         </code><br>
+<hr>
+
+<a href="https://pillow.readthedocs.io/en/stable/" target="blank">V tomto odkazu najdete kompletní příručku <b>pillow</b></a>
+
+        </div>
+    </div>
+{% endblock %}

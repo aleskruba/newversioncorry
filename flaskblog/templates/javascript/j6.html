@@ -1,0 +1,114 @@
+{% include  "javascript/sidemenu.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 70vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 70vh;
+}
+</style>
+
+    <h1  style="font-family: Fantasy ">JavaScript podmínky - IF, Else, Else IF  </h1>
+    <p style="width: 50%; font-family: sans-serif;" >
+       <b> Jak používat podmínky:</b>
+        Podmínky se používají k rozhodnutí o postupu provádění na základě různých podmínek.
+        Pokud je podmínka pravdivá, můžete provést jednu akci a pokud je podmínka nepravdivá, můžete provést další akci<br><br>
+        <b>podmínka IF</b>
+        <div style="width:500px; background:white;">
+      var vek = prompt("zadej svůj věk ");<br>
+        if (vek>18)<br>
+        document.write("je ti více než osmnáct");<br>
+        if (vek<18)<br>
+        document.write("je ti méně než osmnáct");</div><br>
+
+    <i>Vyzkoušejte si to</i></p>
+
+
+<div class="main-editor">
+
+  <div  class="first" contenteditable>
+    &lt;html&gt;
+    &lt;title&gt; JavaScript podmínky - IF, Else, Else IF &lt;/title&gt;
+      &lt;head&gt;
+       &lt;script&gt;
+
+
+      &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+
+  </div>
+    <iframe class="second" >
+    </iframe>
+  </div>
+    <br>
+       <b>podmínka IF...ELSE</b>
+        <div style="width:500px; background:white;">
+
+		var cas = new Date().getHours();<br>
+		if(cas<12)<br>
+		document.write("Dobré ráno");<br>
+		else<br>
+		document.write("Dobré odpoledne");</div><br>
+        <br>
+       <b>podmínka ELSE IF</b>
+        <div style="width:500px; background:white;">
+
+		var x = prompt("zadej první číslo");<br>
+		var y = prompt("zadej druhé číslo");<br>
+		x = parseInt(x);<br>
+		y = parseInt(y);<br>
+		if (x == y)<br>
+			document.write(x + " se rovná " + y );<br>
+		else if (x&lt;y)<br>
+			document.write(x + " je menší než " + y );<br>
+		else<br>
+			document.write(x + " je větší než " +y );</div><br>
+
+    *Funkce parseInt() převede datový typ "string" na "integer".
+<script>
+
+    const first = document.querySelector(".first");
+    const iframe = document.querySelector("iframe");
+
+
+
+    first.addEventListener('keyup',()=>{
+     var html = first.textContent;
+     iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+    })
+
+    first.addEventListener("paste", function(e) {
+           e.preventDefault();
+           var text = e.clipboardData.getData("text/plain");
+           document.execCommand("insertText", false, text);
+       });
+
+    </script>
+  </div>
+{% endblock %}

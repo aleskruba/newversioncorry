@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<form name="reply" method="post" action="{{url_for('posts.reply',post_id=post.id) }}">
+	<input type="text" id="country" name="ruser" value='{{current_user.username}}' readonly><br>
+	<textarea cols="150" rows="3" placeholder="your reply" name="replies"></textarea>
+	<br>
+	<button type="submit" id="sendmessage">Send</button>
+</form>
+<hr>
+{% endblock %}

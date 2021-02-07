@@ -1,0 +1,97 @@
+{% include  "javascript/sidemenu.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 80vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: pre;
+  box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+  height: 80vh;
+}
+</style>
+
+    <h1  style="font-family: Fantasy ">JavaScript funkce s argumentem  </h1>
+    <p style="width: 50%; font-family: sans-serif;" >
+       <b>Co je argument a parametr v JavaScriptu?</b>
+Argument je ta samotná hodnota, se kterou funkci voláme. Parametr je původní proměnná, se kterou se funkce definována.  <br>    <b>Jak vytvořit funkci v JavaScriptu</b>
+    <br>
+
+        <div style="width:500px; background:white;">
+        var pocet = 0;<br>
+      function spocitejsamohlasky(jmeno)<br>
+        {<br>
+     for (var i=0;  i&lt;jmeno.length;  i++)<br>
+        	{<br>
+              if(jmeno[i] == "a" || jmeno[i] == "e" || jmeno[i] == "i" || jmeno[i] == "o" || jmeno[i] == "u")
+<br>
+    pocet = pocet + 1;<br>}<br>
+          document.write("Jméno " + jmeno + " má " + pocet + " samohlásek");<br>
+}<br>
+    var mojejmeno = prompt("Zadej své jméno : ");<br>
+    spocitejsamohlasky(mojejmeno);</div>
+<br><br>
+    <i>Vyzkoušejte si to</i></p>
+
+
+<div class="main-editor">
+
+  <div  class="first" contenteditable>
+    &lt;html&gt;
+    &lt;title&gt; JavaScript - Funkce s agrumentem&lt;/title&gt;
+      &lt;head&gt;
+       &lt;script&gt;
+
+
+      &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+
+  </div>
+    <iframe class="second" >
+    </iframe>
+  </div>
+
+<script>
+
+    const first = document.querySelector(".first");
+    const iframe = document.querySelector("iframe");
+
+
+
+    first.addEventListener('keyup',()=>{
+     var html = first.textContent;
+     iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+    })
+
+    first.addEventListener("paste", function(e) {
+           e.preventDefault();
+           var text = e.clipboardData.getData("text/plain");
+           document.execCommand("insertText", false, text);
+       });
+
+    </script>
+  </div>
+{% endblock %}

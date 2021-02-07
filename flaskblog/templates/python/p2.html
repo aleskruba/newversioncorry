@@ -1,0 +1,46 @@
+{% include "python/vertbart.html" %}
+{% block main %}
+<div style="margin-left:25%;margin-right:20%;padding:1px 16px;height:1000px;">
+<h1 style="text-align: center;">Funkce 'Print()' a proměnné</h1>
+<br>
+<br>
+<p style="font-size:15px; font-family: 'Courier New', Courier, monospace;">
+        <h4><b>Funkce Print()</b><br></h4>
+        Používá se k "vytištění" textu na terminál.
+        Text musí být v úvozovkách buď takto ("text") nebo takto ('text')<br>
+<br>
+        <small>Příklad:</small><br> print("Tento text se vytiskl na konzoli.")
+
+        <code>>>Tento text se vytiskl na konzoli.</code>
+<br><br>
+        <h4><b>Co je to Proměnná</b><br></h4>
+        Proměnná = "šuplík" ve kterém se dají uchovat informace.  Nesmí také obsahovat diakritiku
+<br><br>
+        <h4> <b>Uložení hodnoty do proměnné + tisk hodnoty na obrazovku</b></h4> Pokud chceme proměnou vytisknout, napíšeme do funkce print() jméno proměnné bez uvozovek.<br>
+<br><small>
+Příklad:<br></small>
+jmeno="Josef"<br>
+vek = 53<br>
+print(jmeno ,' má ', vek ,' let ')<Br>
+        <code>>>Josef má 53 let</code>
+        <br>
+
+        <br>
+   <h4>   <b> Python má pět standardních datových typů </b></h4>
+<ul>
+        <li>Numbers</li>
+<li>String</li>
+<li>List</li>
+<li>Tuple</li>
+<li>Dictionary</li></ul>
+<br>
+    <h4><b> Python zárověň podporuje čtyři různé číselné typy </b></h4>
+    <ul><li>Int = celá čísla (-1, 0, 1,...)</li>
+<li>Float = desetinná čísla (0.200, 0.004, 5.000,...)</li>
+<li>String = text (Hello World!)</li>
+<li>List = může obsahovat množství dat, zapisuje se v hranatých závorkách ['list', 5, 2.554]</li></ul>
+
+    </p>
+
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% include  "javascript/sidemenu.html" %}
+{% block main %}
+<div style="margin-left:20%;padding:1px 16px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 2rem;
+  height:50vh;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+</style>
+
+    <h1  style="font-family: Fantasy ">JavaScript - Editace textu a Proměnné</h1>
+    <p style="width: 50%; font-family: sans-serif;" >
+       <b> Editace textu vypadá takto :</b>
+        <div style="width:500px;padding-left:10px; background:white;"> document.write("ahoj lidi");</div><br>
+
+
+  <b> Před použitím proměnné je nejprve nutné ji deklarovat. Deklarace proměnné vypadá takto :</b>
+
+       <div style="width:500px;padding-left:10px; background:white;">
+        var mesto = "Brno";<br>
+        var cislo = 15;<br>
+        var nadpis = "&lt;H1&gt;>Ahoj všichni&lt;/H1&gt;";<br>
+        </div>
+
+        <br>
+        <b>Zápis proměnné vypadá takto :</b>
+   <div style="width:500px; padding-left:10px;background:white;">
+        var mesto = "Brno ";<br>
+        document.write(mesto);<br>
+        <small> pokud chcete provést zápis do consoly použijte: </small> console.log(mesto); <br>
+        </div>
+        <small>poznámka: Název proměnné nesmí být uvnitř uvozovek, jinak by prohlížeč nepoznal, že jde o proměnnou</small>
+    <br>
+        <br>
+    <i>Vyzkoušejte si to</i></p>
+
+
+<div class="main-editor">
+  
+  <div  class="first" contenteditable>
+    &lt;html&gt;
+    &lt;title&gt; JavaScript - Proměnné &lt;/title&gt;
+      &lt;head&gt;
+       &lt;script&gt;
+
+
+      &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+
+  </div>
+    <iframe class="second" >
+    </iframe>
+  </div>
+    <br>
+      <b>Můžete kombinovat text s proměnnou takto</b>
+   <div style="width:500px; padding-left:10px;background:white;">
+        var mesto = "Brno ";<br>
+        document.write("Mé oblíbené město je " + mesto);<br>
+        </div>
+<br>
+    Pokud chcete ve  vašem textu uvést uvozovky je nutné provést zápis následovně "
+    <div style="width:500px; padding-left:10px;background:white;">
+    document.write("takto napíšu \' slovo s uvozovky \'  uvnitř textu ")</div>
+
+<script>
+
+    const first = document.querySelector(".first");
+    const iframe = document.querySelector("iframe");
+    
+  
+    
+    first.addEventListener('keyup',()=>{
+     var html = first.textContent;
+     iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+    })
+    
+    first.addEventListener("paste", function(e) {
+           e.preventDefault();
+           var text = e.clipboardData.getData("text/plain");
+           document.execCommand("insertText", false, text);
+       });
+  
+    </script>
+  </div>
+{% endblock %}

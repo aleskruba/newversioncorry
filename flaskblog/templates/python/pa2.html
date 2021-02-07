@@ -1,0 +1,107 @@
+{% include "python/vertbart.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 2rem;
+  height:50vh;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+</style>
+
+    <h1  style="font-family:sans-serif ">File objects - čtení a zápis do souborů</h1><br>
+    <div style="width: 50%; font-family: sans-serif;">
+<b>čtení ze souborů</b><br><br>
+          Tímto kódem vytisknete název souboru<br>
+        <code>f = open('test.txt','r') <small style="color:black"> 'r' znamená , že soubor je pouze pro čtení</small><br>
+print(f.name)<br>
+f.close() <small style="color:black"> je nutné soubor zavřít</small> <br>
+        </code><br>
+
+      Toto je druhá lepší možnost , kdy se soubor zavře automaticky<br>
+<code>
+    with open('test.txt','r') as f:<br>
+     &nbsp;&nbsp;print(f.name)
+
+    <br>
+        </code><br>
+
+   Tímto kódem vytiskneme obsah souboru <br>
+    <code>
+    with open('test.txt','r') as f:<br>
+     &nbsp;&nbsp;obsah = f.read() <br>
+        &nbsp;&nbsp;print(obsah)
+        <br>
+<small style="color:black">   <code style="color:red">obsah = f.readlines() </code>vytisknete obsah jako  list  </small><br>
+        <small style="color:black">   <code style="color:red">obsah = f.readline() </code>vytisknete první řádek  </small><br>
+        </code><br>
+
+           Tímto kódem vytiskneme pouze zadaný počet znaků(10) z obsahu souboru <br>
+    <code>
+    with open('test.txt','r') as f:<br>
+     &nbsp;&nbsp;obsah = f.read(10) <br>
+        &nbsp;&nbsp;print(obsah,end='')
+        <br>
+
+        </code><br>
+
+           Tímto kódem vytiskneme obsah souboru pomocí cyklu For <br>
+          <code>
+    with open('test.txt','r') as f:<br>
+     &nbsp;&nbsp;for radek in f: <br>
+        &nbsp;&nbsp;print(radek)        <small style="color:black"> nebo </small> <code >print(radek,end='')</code>  <br>
+        <br>
+        </code>
+    </div>
+
+
+
+
+ <div style="width: 50%; font-family: sans-serif;" >
+    <b style="color:black"> zápis do souborů</b><br><br>
+     Tímto kódem zapíšeme text  'test' do souboru text.txt <br>
+   <code>
+    with open('test.txt','w') as f:<br>
+     &nbsp;&nbsp; f.write('test') <br>
+        <br>
+
+        </code><br>
+
+     Tímto kódem přidáme nový text  'test1' do souboru text.txt aniž by se ten starý smazal<br>
+   <code>
+    with open('test.txt','a') as f:<br>  <small style="color:black">'a' jako append(přidej) </small>
+     &nbsp;&nbsp; f.write('test') <br> <small style="color:black">přidat text na nový řádek <code>f.write('test\n') </code></small>
+
+        <br>
+
+        </code><br>
+
+</div>
+    </div>
+
+{% endblock %}

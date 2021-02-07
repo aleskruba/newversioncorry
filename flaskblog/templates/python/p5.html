@@ -1,0 +1,44 @@
+{% include "python/vertbart.html" %}
+{% block content %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+
+<h1 style="font-family:sans-serif ">Tuple a Dictionary</h1><br>
+<div style="width: 50%; font-family: sans-serif;">
+    <br>
+    <b>Tuple</b> je neměnný list, k datům se dá dostat, ale nemůžou se měnit.
+    <br><b>Tuple</b> se vytváří stejně jako list, ale používají se kulaté závorky. <br>
+    Vytvoření tuplu: <code>tuple = (1, 'string', 1.5)</code><br>
+    <br>
+    <b>Může mít pouze dvě metody:</b><br>
+    <ul>
+        <li><b>.count()</b> vrátí kolikrát se zadaný prvek v tuplu objevuje</li>
+        <li><b>.index()</b> vrátí pozici zadaného prvku v tuplu</li>
+    </ul>
+
+    <br>
+    <b>Dictionary</b> se používají k uchování párů dat ve tvaru: <i>key(klíč):value(hodnota)</i>
+    Dá se měnit, nesmí obsahovat duplikáty
+    Vytvoření dictionary:
+    <pre>
+<code>dict = {
+    "jmeno": "honza"
+    "prijmeni": "novy"
+    "vek": 30
+}</code></pre>
+    <code>print(dict)</code> - vypíše celý dictionary
+    <br>
+    <code>print(dict["jmeno"])</code> - vypíše pouze hodnotu od klíče jméno
+    <br>
+    <br>
+    Do dictionary se dají data dodatečně přidat: <code>dict["mesto"] = "Praha"</code>
+    <br>
+    <b>Užitečné Metody:</b>
+    <ul>
+        <li>.clear() - Odebere vše z dictionary</li>
+        <li>.keys() - Vrátí všechny keys z dictionary</li>
+        <li>.copy() - Vrátí kopii dictionary</li>
+        <li>.pop() - Odebere data se zadaným klíčem</li>
+    </ul>
+</div>
+    </div>
+{% endblock %}

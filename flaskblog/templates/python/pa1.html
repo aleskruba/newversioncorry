@@ -1,0 +1,108 @@
+{% include "python/vertbart.html" %}
+{% block main %}
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<style>
+.main-editor {
+  background: rgba(0, 0, 0, 0.91);
+  display: flex;
+  width: 70%;
+  padding: 2rem;
+  height:50vh;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #36383f;
+}
+
+.first {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+
+.second {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+
+  white-space: pre;
+   box-shadow: 0 1px 1px rgb(22, 22, 22);
+  padding: 1rem;
+     height: 50vh;
+}
+</style>
+
+    <h1  style="font-family:sans-serif ">OS modul - základní funkčnost operačního systému</h1><br>
+    <div style="width: 50%; font-family: sans-serif;" >
+
+          Tímto kódem vytisknete aktulání složku ve které se nacházíte<br>
+        <code>import os<br>
+print(os.getcwd())<br>
+        </code><br>
+
+      Tímto kódem změníte vytisknete aktulání složku ve které se nacházíte<br>
+        <code>
+        os.chdir("/Users/Alesk/Desktop")<br>
+print(os.getcwd())<br>
+        </code><br>
+
+   Tímto kódem vytisknete všechny složky a soubory v uvedené složce <br>
+        <code>
+        os.chdir("/Users/Alesk/Desktop")<br>
+print(os.listdir())<br>
+        </code><br>
+
+           Tímto kódem vytvoříme novou složku, nebo vice slozek <br>
+        <code>
+        os.chdir("/Users/Alesk/Desktop")<br>
+os.mkdir("prvni slozka")<br>
+os.makedirs('druha slozka/slozka ve druhe slozce')<br>
+        </code><br>
+
+     Tímto kódem složku(složky) smažeme <br>
+        <code>
+        os.chdir("/Users/Alesk/Desktop")<br>
+os.rmdir("prvni slozka")<br>
+os.removedirs('druha slozka/slozka ve druhe slozce')<br>
+        </code><br>
+
+    Tímto kódem přejmenujeme soubor test.txt na test1.txt <br>
+        <code>
+        os.chdir("/Users/Alesk/Desktop")<br>
+os.chdir("/Users/Alesk/Desktop")<br>
+os.rename("test.txt","test1.txt")<br>
+        </code><br>
+
+            Tímto kódem vytiskneme prodrobnosti souboru test.txt  <br>
+        <code>
+            import os<br>
+        from datetime import datetime<br><br>
+        os.chdir("/Users/Alesk/Desktop")<br>
+        print(os.stat('test.txt'))<br>
+            x = os.stat('cs1.txt').st_size<br>
+        print(x)<br>
+        y = os.stat('test.txt').st_mtime<br>
+        print(datetime.fromtimestamp(y))<br>
+        </code><br>
+
+
+
+    Tímto kódem vytiskneme pomocí cyklu "for" všechny soubory ve složkách a sub složkách <br>
+        <code>
+    for dir_cesta,dir_nazev,nazev_souboru in os.walk("/Users/Alesk/Desktop"): <br>
+   &nbsp;&nbsp; print(dir_cesta) <br>
+   &nbsp;&nbsp; print(dir_nazev) <br>
+   &nbsp;&nbsp; print(nazev_souboru) <br>
+        </code><br>
+
+         Tímto kódem pomocí "os.path.join" vytoříme nový soubor ve složce  <br>
+        <code>
+     cesta_souboru = os.path.join("/Users/Alesk/Desktop",'test.txt')<br>
+    print(cesta_souboru)<br>
+        </code><br>
+
+    </div>
+    </div>
+{% endblock %}

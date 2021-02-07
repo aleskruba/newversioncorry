@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% for post in posts.items %}
+
+<article class="media content-section">
+  <p class="article-content">
+  <div class="media-body">
+   <div class="article-metadata">
+    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username ) }}">{{ post.author.username }}
+      <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>   <b ><i><a style="color:red;justify-content: center;" class="article-title"  href="{{ url_for('posts.post', post_id=post.id) }}" >   Předmět : {{ post.title }} </a></i> </b><br>
+     <img  style="border-radius: 50%; float:left" class="rounded-circle article-img" src="{{ url_for('static',filename='profile_pics/' + post.author.image_file) }}"></a>
+<small style="white-space: pre-wrap;">{{ post.content | wordwrap(200) }}</small><br>
+<a style="float:right;" class="btn btn-primary btn-lg active btn-sm mt-1 mb-1" role="button" aria-pressed="true"  href="{{url_for('posts.rep',post_id=post.id) }}">Reply</a>
+
+       <br>
+<hr>
+       <div style="margin-left:30%; width: 100%; right:400; background-color:white; color:blue">
+       {% for post1 in posts1 %}
+           {% if post.id == post1.id %}
+				<b> {{post1.ruser}} naspal : </b>
+<small style="white-space: pre-wrap;">{{  post1.replies | wordwrap(200) }}</small>
+
+           <br>
+           {% endif %}
+		{% endfor %}
+    </div>
+    </div>
+
+  </div>
+</article>
+{% endfor %}
+
+{% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+  {% if page_num %}
+     {% if posts.page == page_num %}
+      <a class="btn btn-info mb-4" href="{{ url_for('main.comments',page=page_num) }}">{{ page_num }}</a>
+    {% else %}
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('main.comments',page=page_num) }}">{{ page_num }}</a>
+    {% endif %}
+  {% else %}
+...
+  {% endif %}
+{% endfor %}
+
+{% endblock %}
